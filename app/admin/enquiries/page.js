@@ -4,7 +4,6 @@ import admin from "firebase-admin";
 
 export const revalidate = 0; // always fetch latest
 
-/* ---------- Firebase init (raw JSON only) ---------- */
 function initFirebaseRawJson() {
   if (admin.apps.length) return admin;
 
