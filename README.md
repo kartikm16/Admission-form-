@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Pillai College of Engineering — Admission Enquiry
 
-## Getting Started
+Next.js (App Router) site with a persistent admission enquiry widget and API-backed JSON storage.
 
-First, run the development server:
-
+### Quick start
+1) Install dependencies
+```bash
+npm install
+```
+2) Run the dev server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+3) Open http://localhost:3000. The Admission Enquiry widget floats on every page; the main form is on the homepage.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Project structure (key files)
+- `app/page.js` — hero + primary admission form.
+- `components/AdmissionForm.jsx` — reusable enquiry form with validation.
+- `components/AdmissionWidget.jsx` — floating widget (left desktop, bottom mobile) with modal form and focus trap.
+- `app/api/enquiries/route.js` — API to store enquiries in `data/enquiries.json` (creates the file on first write).
+- `app/admin/enquiries/page.js` — simple admin view (disabled by default; set `ADMIN_VIEW_ENABLED=true` in env to enable).
+- `data/enquiries.json` — local JSON store for submissions.
+- `tailwind.config.js`, `postcss.config.mjs`, `app/globals.css` — Tailwind setup and global styles.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### API + storage
+- `POST /api/enquiries` accepts `{ name, email, phone, program }`, validates on the server, appends to `data/enquiries.json`, and returns `201` on success.
+- `GET /api/enquiries` returns the current list (useful for local debugging).
+- Storage is purely file-based using `fs.promises`; no external DB. Ensure the server process has write permissions to the project directory.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Admin helper page
+- Path: `/admin/enquiries`.
+- Disabled unless `ADMIN_VIEW_ENABLED=true` is set in your environment (local-use only).
+- Reads from `data/enquiries.json` and shows a simple table.
 
-## Learn More
+### Styling & accessibility
+- TailwindCSS with a calm blue/neutral palette, soft shadows, and responsive layout.
+- Widget traps focus while open, closes on Esc, and restores focus to the trigger button.
+- Inputs include labels, aria attributes, and inline error messages.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Notes
+- If you deploy, ensure your hosting allows file writes (the JSON store) or adapt the API to your preferred database.
+- For CORS, the built-in Next.js API is same-origin; no extra config needed for typical usage.

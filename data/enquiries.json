@@ -1,0 +1,18 @@
+[
+  {
+    "id": "ec6b40c9-c334-4fb3-b93c-7d35cc34afb8",
+    "name": "Kartik Mahamuni",
+    "email": "mahamunikartik@gmail.com",
+    "phone": "1234567890",
+    "program": "B.Tech — Computer Engineering",
+    "submittedAt": "2025-12-12T12:10:34.709Z"
+  },
+  {
+    "id": "dfd3ea19-5203-4bd6-ac6a-ddff518d7a61",
+    "name": "Kartik",
+    "email": "kartik24comp@student.mes.ac.in",
+    "phone": "1234567890",
+    "program": "B.Tech — Electronics",
+    "submittedAt": "2025-12-12T15:05:38.758Z"
+  }
+]
