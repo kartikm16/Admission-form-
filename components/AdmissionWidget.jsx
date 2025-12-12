@@ -18,9 +18,10 @@ export default function AdmissionWidget() {
   return (
     <>
       <button
-      
         onClick={() => setOpen(true)}
-        className="fixed z-40 left-1/2 bottom-2 -translate-x-1/2 w-[90%] h-12 md:left-10 md:bottom-0 md:-translate-y-1/2 md:h-12 md:w-[12rem] md:top-1/2 md:-rotate-90 rounded-full bg-primary-600 px-2 py-1 text-sm font-semibold text-white shadow-lg transition hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
+        className="fixed z-50 transition-all shadow-lg shadow-primary-600/30 hover:bg-primary-700 hover:shadow-primary-600/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500
+        left-1/2 bottom-5 -translate-x-1/2 w-[90%] h-14 rounded-full bg-gradient-to-r from-primary-600 to-primary-700 text-sm font-bold text-white
+        md:w-auto md:h-auto md:left-0 md:top-1/2 md:bottom-auto md:right-auto md:-translate-y-1/2 md:-rotate-90 md:origin-center md:-translate-x-[28%] md:hover:-translate-x-[24%] md:rounded-t-xl md:rounded-b-xl md:px-8 md:py-4"
       >
         Admission Enquiry
       </button>
@@ -29,7 +30,7 @@ export default function AdmissionWidget() {
         <div className="fixed inset-0 z-30 flex items-center justify-center md:justify-start md:pl-24">
           <div className="absolute inset-0 bg-slate-900/45 backdrop-blur-sm" onClick={close} />
           <div
-          
+
             className="relative mx-4 w-full max-w-xl rounded-2xl glass-panel animate-fade-in"
           >
             <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
@@ -42,7 +43,7 @@ export default function AdmissionWidget() {
               <button
                 onClick={close}
                 className="rounded-full p-2 text-slate-500 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
-                
+
               >
                 ✕
               </button>
